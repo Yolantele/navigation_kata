@@ -52,7 +52,7 @@ class Navigator
     if    @o == 'N'; @o = 'E'
     elsif @o == 'E'; @o = 'S'
     elsif @o == 'S'; @o = 'W'
-    else @o == 'W'; @o = 'N'
+    else  @o == 'W'; @o = 'N'
     end
   end
   
@@ -63,6 +63,15 @@ class Navigator
     when 'W' then @x -= MOVE_BY_UNIT
     when 'E' then @x += MOVE_BY_UNIT
     else raise Error
+    end
+  end
+
+  def changed_orientation(command)
+    case command
+    when 'F' then move_in(@o)
+    when 'R' then spin_right
+    when 'L' then spin_left
+    else 'Use R, L, F commands'
     end
   end
 

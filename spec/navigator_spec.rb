@@ -53,14 +53,14 @@ end
       it ' changes N(orth) orient to E(ast)' do
         navigator.setup_for(:rover1)
         navigator.changed_orientation('L')
-        expect(navigator.o).to eq('E')
+        expect(navigator.o).to eq('S')
       end
     end
     context ' when command is R - it spins right by 90 degrees' do
       it ' changes N(orth) orient to W(est)' do
         navigator.setup_for(:rover1)
         navigator.changed_orientation('R')
-        expect(navigator.o).to eq('W')
+        expect(navigator.o).to eq('N')
       end
     end
   end
