@@ -24,7 +24,7 @@
 
 > The rectangula grid : 
 - the robot that moves “off” an edge of the grid leave a robot “scent” at the last grid position. - An instruction to move     “off” the world from a grid point from which a robot has been previously lost is simply ignored by the current robot.
-- grid size is 50x50
+- grid size is 5x3
 - the lower-left coordinates are assumed to be 0, 0
 
 > The  Input 
@@ -42,7 +42,10 @@
 
 a)
 ```
-5 3
+5 3 - upper right grid world coordinates
+```
+
+```
 1 1 E
 RFRFRFRF
 ```
