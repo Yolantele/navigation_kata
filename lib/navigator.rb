@@ -11,9 +11,11 @@ ROVERS = {
   rover3: ['0 3 W', 'LLFFFLFLFL']
 }
 
+MOVE_BY_UNIT = 1
+
 class Navigator
   attr_reader :grid, :rovers, :x, :y, :o, :explore
-  
+
   def initialize(rovers = ROVERS, grid = GRID)
     @rovers = rovers
     @grid = grid
@@ -35,6 +37,33 @@ class Navigator
     @y = starting_position[1].to_i - 1
     @o = starting_position[2]
     @explore = ROVERS[rover][1].split('')
+  end
+
+  
+  def spin_right
+    if    @o == 'N'; @o = 'W'
+    elsif @o == 'W'; @o = 'S'
+    elsif @o == 'S'; @o = 'E'
+    else  @o == 'E'; @o = 'N'
+    end
+  end
+  
+  def spin_left 
+    if    @o == 'N'; @o = 'E'
+    elsif @o == 'E'; @o = 'S'
+    elsif @o == 'S'; @o = 'W'
+    else @o == 'W'; @o = 'N'
+    end
+  end
+  
+  def move_in(orientation)
+    case orientation
+    when 'N' then @y += MOVE_BY_UNIT
+    when 'S' then @y -= MOVE_BY_UNIT
+    when 'W' then @x -= MOVE_BY_UNIT
+    when 'E' then @x += MOVE_BY_UNIT
+    else raise Error
+    end
   end
 
 end
