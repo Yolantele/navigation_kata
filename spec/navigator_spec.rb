@@ -50,18 +50,41 @@ end
   end
   describe ' #changed_orientation' do
     context ' when command is  L - it spins left by 90 degrees' do
-      it ' changes N(orth) orient to E(ast)' do
+      it ' changes orientation to South' do
         navigator.setup_for(:rover1)
         navigator.changed_orientation('L')
         expect(navigator.o).to eq('S')
       end
     end
     context ' when command is R - it spins right by 90 degrees' do
-      it ' changes N(orth) orient to W(est)' do
+      it ' changes orientation to North)' do
         navigator.setup_for(:rover1)
         navigator.changed_orientation('R')
         expect(navigator.o).to eq('N')
       end
+    end
+    context ' when command is F - it moves in previously set direction' do
+      it ' keeps moving in East orientation' do
+        navigator.setup_for(:rover1)
+        navigator.changed_orientation('F')
+        expect(navigator.o).to eq('E')
+        expect(navigator.y).to eq(0)
+      end
+    end
+  end
+
+  describe ' #navigate(rover)' do
+    it 'goes through all the exploration commands' do
+      navigator.navigate(:rover2)
+      expect(navigator.x).to eq(2)
+      expect(navigator.y).to eq(2)
+      expect(navigator.o).to eq('N')
+    end
+  end
+
+  describe ' #rovers_report' do
+    it 'returns 1st rover end coordinates' do
+      expect(navigator.rovers_report).to eq(['1 1 E', '3 3 N', '2 3 S'])
     end
   end
 
