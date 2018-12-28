@@ -1,5 +1,72 @@
 ## Navigation Robots:
 
+A ruby prototype to solving robot navigation proglem. 
+Ruby was chosen for rapid protoyping capacity and the object-oriented nature of the kata itself.
+
+Solution:
+
+  Navigator:
+
+  1. sets the robot on grid - the starting location and sequence of navigation instructions
+  2. converts grid coordinates to array coordinates (nested arrays)
+  3. executes each navigational step
+  4. converts array coordinates back into grid coordinates
+  5. iterates each robot navigational instructions 
+
+
+    Next Steps:
+
+    1. improve report on lost robots
+    2. solve navigation bug on one of the robots.
+    3. extract classes for grid and rules to feed in custom rules of the game
+
+Instructions to run application:
+
+  1. clone this repo:
+  ```
+  git clone https://github.com/Yolantele/navigation_kata
+  ```
+  
+  2. change directory to ```navigation_kata```: 
+
+  ```
+  cd navigation_kata
+  ```
+
+  3. Install dependencies:
+
+  ```
+  bundle install
+  ```
+
+  4. run tests: 
+  ```
+  rspec
+  ```
+
+  5. open irb or pry console. In your console
+
+  ```
+  require './lib/navigator.rb'
+  ```
+
+  6. create new navigator, which will load the tested rovers and the grid
+
+  ```
+  navigator = Navigator.new
+  ```
+
+  7. lastly, run the encapsulate method - rovers_report on navigator to see the final coordinates Reports
+
+  ```
+  navigator.rovers_report
+  ```
+
+
+
+
+Rules of the kata:
+
 > A robot position consists of:
 - a grid coordinate, a pair of integers: 
     x

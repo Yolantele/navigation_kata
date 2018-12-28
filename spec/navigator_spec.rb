@@ -83,7 +83,7 @@ end
   end
 
   describe ' #rovers_report' do
-    it 'returns 1st rover end coordinates' do
+    it 'returns all rover end coordinates' do
       expect(navigator.rovers_report).to eq(['1 1 E', '3 3 N', '2 3 S'])
     end
   end
