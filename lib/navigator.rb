@@ -75,4 +75,27 @@ class Navigator
     end
   end
 
+  def navigate(rover)
+    setup_for(rover)
+    navigation_commands.each do |command|
+      changed_orientation(command)
+    end
+  end
+
+  def convert_to_coordinates
+    coord1 = @x + 1
+    coord2 = @y + 1
+    "#{coord1} #{coord2} #{@o}"
+  end
+  
+  def rovers_report
+    counter = 0
+    ROVERS.each_key do |rover|
+      counter += 1
+      navigate(rover)
+      @rovers_end_coordinates << "#{convert_to_coordinates}"
+    end
+    @rovers_end_coordinates
+  end
+
 end
